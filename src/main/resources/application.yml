@@ -1,0 +1,15 @@
+birdwikibot:
+  username: #username
+  token: #token
+
+spring:
+  redis:
+    host: #host
+    port: #port
+
+time:
+  schedule: 0 0 8,12,18,22 * * *
+  hours: 8, 12, 18, 22
+
+server:
+  port: 8081
