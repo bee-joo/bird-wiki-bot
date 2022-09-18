@@ -6,6 +6,7 @@ spring:
   redis:
     host: #host
     port: #port
+    password: #password
 
 time:
   schedule: 0 0 8,12,18,22 * * *
