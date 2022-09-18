@@ -4,6 +4,7 @@ import com.example.birdwikibot.category.RandomCategory;
 import com.example.birdwikibot.db.repository.TimeRepository;
 import kong.unirest.Unirest;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import java.util.Set;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class BotServiceImpl implements BotService {
 
     private final TimeRepository timeRepository;
@@ -34,7 +36,7 @@ public class BotServiceImpl implements BotService {
                     .getFirst("location");
             return Optional.ofNullable(result);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(String.valueOf(e));
             return Optional.empty();
         }
     }
@@ -52,6 +54,7 @@ public class BotServiceImpl implements BotService {
                     URLDecoder.decode(splitLink[splitLink.length - 1].replace('_', ' '), StandardCharsets.UTF_8) +
                     "](" + gotLink + ')';
         } else {
+            log.warn("Something wrong with getting link");
             text = "Что-то пошло не так :(";
         }
 
