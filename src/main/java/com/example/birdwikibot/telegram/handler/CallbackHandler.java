@@ -4,6 +4,7 @@ import com.example.birdwikibot.service.BotService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 
 @Component
@@ -11,7 +12,6 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 public class CallbackHandler {
 
     private final BotService botService;
-    private final MessageHandler messageHandler;
 
     public AnswerCallbackQuery handleSubscription(CallbackQuery callbackQuery) {
         String text;
@@ -19,16 +19,29 @@ public class CallbackHandler {
         String time = callbackQuery.getData();
 
         if (botService.isUserSubscriber(chatId)) {
-            text = "Вы уже подписаны";
+            botService.unsubscribeUser(chatId);
+            text = "Время изменено!";
         } else {
-            botService.subscribeUser(time, chatId);
             text = "Подписка оформлена!";
         }
+
+        botService.subscribeUser(time, chatId);
 
         AnswerCallbackQuery answerCallbackQuery = new AnswerCallbackQuery();
         answerCallbackQuery.setCallbackQueryId(callbackQuery.getId());
         answerCallbackQuery.setText(text);
 
         return answerCallbackQuery;
+    }
+
+    public EditMessageText editCallback(CallbackQuery callbackQuery) {
+        String chatId = callbackQuery.getMessage().getChatId().toString();
+        Integer messageId = callbackQuery.getMessage().getMessageId();
+
+        EditMessageText editMessageText = new EditMessageText("Отлично!");
+        editMessageText.setChatId(chatId);
+        editMessageText.setMessageId(messageId);
+
+        return editMessageText;
     }
 }
