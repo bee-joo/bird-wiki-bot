@@ -1,6 +1,7 @@
-package com.example.birdwikibot.telegram.command;
+package com.example.birdwikibot.telegram.command.subscription;
 
 import com.example.birdwikibot.service.BotService;
+import com.example.birdwikibot.telegram.command.SuperCommand;
 import com.example.birdwikibot.telegram.keyboard.ReplyKeyboard;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -19,7 +20,7 @@ public class UnsubscribeCommand extends SuperCommand {
 
         String text;
         if (!botService.isUserSubscriber(chatId)) {
-            text = "Вы ещё подписаны";
+            text = "Вы ещё не подписаны";
         } else {
             text = "Вы успешно отписались";
             botService.unsubscribeUser(chatId);
