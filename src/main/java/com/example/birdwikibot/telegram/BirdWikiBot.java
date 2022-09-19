@@ -1,7 +1,7 @@
 package com.example.birdwikibot.telegram;
 
 import com.example.birdwikibot.service.BotService;
-import com.example.birdwikibot.telegram.command.*;
+import com.example.birdwikibot.telegram.command.service.RandomCommand;
 import com.example.birdwikibot.telegram.handler.CallbackHandler;
 import com.example.birdwikibot.telegram.handler.MessageHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -49,8 +49,9 @@ public class BirdWikiBot extends TelegramLongPollingBot {
             } else if (update.hasCallbackQuery()) {
                 CallbackQuery callbackQuery = update.getCallbackQuery();
 
-                executeAsync(messageHandler.getSimpleMessage(callbackQuery.getMessage().getChatId().toString(), "Что-нибудь ещё?"));
+                executeAsync(callbackHandler.editCallback(callbackQuery));
                 executeAsync(callbackHandler.handleSubscription(callbackQuery));
+                executeAsync(messageHandler.getSimpleMessage(callbackQuery.getMessage().getChatId().toString(), "Что-нибудь ещё?"));
             }
         } catch (TelegramApiException e) {
             log.error(String.valueOf(e));
