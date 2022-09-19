@@ -21,15 +21,16 @@ public class ReplyKeyboard {
 
     public ReplyKeyboardMarkup getSubscribeReplyKeyboard() {
         KeyboardRow keyboardRow = new KeyboardRow();
-        keyboardRow.add(new KeyboardButton("Назад"));
+        keyboardRow.add(new KeyboardButton(CommandNames.BACK_COMMAND.getKey()));
         keyboardRow.add(new KeyboardButton(CommandNames.SUBSCRIBE_COMMAND.getKey()));
 
         return defaultKeyboardSettings(Collections.singletonList(keyboardRow));
     }
 
-    public ReplyKeyboardMarkup getUnsubscribeReplyKeyboard() {
+    public ReplyKeyboardMarkup getChangeStatusReplyKeyboard() {
         KeyboardRow keyboardRow = new KeyboardRow();
-        keyboardRow.add(new KeyboardButton("Назад"));
+        keyboardRow.add(new KeyboardButton(CommandNames.BACK_COMMAND.getKey()));
+        keyboardRow.add(new KeyboardButton(CommandNames.CHANGE_TIME_COMMAND.getKey()));
         keyboardRow.add(new KeyboardButton(CommandNames.UNSUBSCRIBE_COMMAND.getKey()));
 
         return defaultKeyboardSettings(Collections.singletonList(keyboardRow));
