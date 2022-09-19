@@ -6,6 +6,8 @@ target/
 /log
 /.mvn
 *.log
+application-prod.yml
+application-test.yml
 
 ### STS ###
 .apt_generated
