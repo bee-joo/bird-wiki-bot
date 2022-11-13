@@ -4,6 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum CommandNames {
+
+    START_COMMAND("/start", "Начать"),
     RANDOM_COMMAND("/random", "Случайная птица"),
     SUBSCRIPTION_MENU("/subscription", "Ежедневная птица"),
     SUBSCRIBE_COMMAND("/subscribe", "Подписаться"),

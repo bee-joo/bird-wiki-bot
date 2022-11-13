@@ -2,6 +2,7 @@ package com.example.birdwikibot.telegram.command;
 
 import com.example.birdwikibot.telegram.command.service.BackCommand;
 import com.example.birdwikibot.telegram.command.service.RandomCommand;
+import com.example.birdwikibot.telegram.command.service.StartCommand;
 import com.example.birdwikibot.telegram.command.subscription.ChangeTimeCommand;
 import com.example.birdwikibot.telegram.command.subscription.SubscribeCommand;
 import com.example.birdwikibot.telegram.command.subscription.SubscriptionMenu;
@@ -13,13 +14,15 @@ import java.util.HashMap;
 @Component
 public class Menu extends HashMap<String, SuperCommand> {
 
-    public Menu(RandomCommand randomCommand,
+    public Menu(StartCommand startCommand,
+                RandomCommand randomCommand,
                 SubscriptionMenu subscriptionMenu,
                 SubscribeCommand subscribeCommand,
                 UnsubscribeCommand unsubscribeCommand,
                 ChangeTimeCommand changeTimeCommand,
                 BackCommand backCommand) {
 
+        put(CommandNames.START_COMMAND.getId(), startCommand);
         put(CommandNames.RANDOM_COMMAND.getId(), randomCommand);
         put(CommandNames.RANDOM_COMMAND.getKey(), randomCommand);
         put(CommandNames.SUBSCRIPTION_MENU.getId(), subscriptionMenu);
