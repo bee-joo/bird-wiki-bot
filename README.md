@@ -21,4 +21,4 @@ https://t.me/bird_wiki_bot
 1. Set up bot using [BotFather](https://t.me/BotFather)
 2. Set up Redis database
 3. Change [application.yml](https://github.com/bee-joo/bird-wiki-bot/blob/main/src/main/resources/application.yml) for bot token and database config
-4. ```mvnw clean package && java -jar [jar_name].jar --spring.config.location=file:///[location of application.yml]```
+4. ```mvnw clean package -DskipTests && java -jar [jar_name].jar --spring.config.location=file:///[location of application.yml]```
