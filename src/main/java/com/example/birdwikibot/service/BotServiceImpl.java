@@ -81,4 +81,9 @@ public class BotServiceImpl implements BotService {
     public Set<String> getUsersByTime(String time) {
         return timeRepository.getChatIdsByTime(time);
     }
+
+    @Override
+    public boolean isUserMember(String time, String chatId) {
+        return timeRepository.isChatIdMember(time, chatId);
+    }
 }

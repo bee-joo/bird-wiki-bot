@@ -11,4 +11,5 @@ public interface BotService {
     void subscribeUser(String time, String chatId);
     void unsubscribeUser(String chatId);
     Set<String> getUsersByTime(String time);
+    boolean isUserMember(String time, String chatId);
 }
