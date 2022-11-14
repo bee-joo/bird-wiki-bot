@@ -13,6 +13,7 @@ https://t.me/bird_wiki_bot
 - [Telegram Bots Java Library](https://github.com/rubenlagus/TelegramBots) - Telegram API and classes
 - [Spring Boot](https://spring.io/projects/spring-boot) - DI, IoC-container and beans configuring
 - [Redis](https://redis.io/) - database
+- [Spring Data Redis](https://github.com/spring-projects/spring-data-redis) - data access
 - [Unirest](http://kong.github.io/unirest-java/) - HTTP client for fetching Wiki links
 - [Lombok](https://projectlombok.org/) - boilerplate code generation
 - [Apache Maven](https://maven.apache.org/) - build system and dependency management
